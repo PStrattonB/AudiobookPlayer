@@ -72,8 +72,7 @@ class MyApp(MDApp):
                                         pos_hint={'center_x': 0.2, 'center_y': 0.05},
                                         size_hint=(0.2, 0.2))
         # Switch
-        self.switch = Switch(pos_hint={'center_x': 0.75, 'center_y': 0.05})
-        #TODO debug mute switch, clicking around the switch activates it. Can't use the stop button as a result
+        self.switch = Switch(size_hint=(0.1, 0.1), pos_hint={'center_x': 0.75, 'center_y': 0.05})
 
         layout.add_widget(self.playbutton)
         layout.add_widget(self.stopbutton)
