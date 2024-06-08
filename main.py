@@ -19,6 +19,8 @@ from kivymd.app import MDApp
 from kivy.core.audio import SoundLoader
 from kivy.core.window import Window
 from kivy.clock import Clock
+from kivy.metrics import dp
+from kivy.animation import Animation
 import glob
 
 Window.size = (400, 600)
@@ -41,7 +43,7 @@ class MyApp(MDApp):
         # Song Label/Title
         self.songlabel = Label(pos_hint={'center_x': 0.5, 'center_y': 0.96},
                                size_hint=(1, 1),
-                               font_size=18)
+                               font_size=dp(12))
 
         # Album Image
         self.albumimage = Image(pos_hint={'center_x': 0.5, 'center_y': 0.55},
@@ -109,7 +111,7 @@ class MyApp(MDApp):
         self.song_title = self.song_list[random.randrange(0, self.song_count)]
         print(self.song_title)
         self.sound = SoundLoader.load('{}/{}'.format(self.music_dir, self.song_title))
-        self.songlabel.text = "==== Playing ~ " + self.song_title[:-4] + " ===="
+        self.songlabel.text = "=== Playing ~ " + self.song_title[:-4] + " ==="
         image_files = glob.glob(self.music_dir + "*.jpg")
         
         if image_files:
