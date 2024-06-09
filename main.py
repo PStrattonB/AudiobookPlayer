@@ -7,6 +7,7 @@ import time
 import kivy
 kivy.require('2.3.0')
 from kivy.app import App
+from scroll_label import ScrollLabel
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivymd.uix.button import MDIconButton
 from kivy.uix.label import Label
@@ -41,9 +42,10 @@ class MyApp(MDApp):
         self.song_count = len(self.song_list)
 
         # Song Label/Title
-        self.songlabel = Label(pos_hint={'center_x': 0.5, 'center_y': 0.96},
-                               size_hint=(1, 1),
-                               font_size=dp(12))
+        self.songlabel = ScrollLabel(pos_hint={'center_x': 0.5, 'center_y': 0.96},
+                                       size_hint=(1, None),
+                                       height=dp(30),
+                                       font_size=dp(12))
 
         # Album Image
         self.albumimage = Image(pos_hint={'center_x': 0.5, 'center_y': 0.55},
@@ -94,11 +96,11 @@ class MyApp(MDApp):
 
         self.switch.bind(active=mute)
 
-        def volume(instance,value):
+        def volume(instance, value):
             print(value)
             self.sound.volume = value
 
-        self.volumeslider.bind(value = volume)
+        self.volumeslider.bind(value=volume)
 
         # Play a random song on start
         Clock.schedule_once(self.playaudio)
